@@ -7,8 +7,8 @@ import requests
 from .serializers import CreateUserSerializer
 
 
-CLIENT_ID = '<CLIENT_ID>'
-CLIENT_SECRET = '<CLIENT_SECRET>'
+CLIENT_ID = 'cFqK7vHAhMB9XvZO24SDrqhSXTMZWHgJ8oEhA9LW'
+CLIENT_SECRET = 'bvR7f1FweEXuKOaJSxr8nSz771RoMjEMYtuxFbBG1RviHmVkMJkwXR68BW3721AM5nRphvEHee8HkaVQNACTwbfwAwyp0ur9ok2PnymQ4KvAbdcyM8ewuzZWzz2Dz2d9'
 
 
 
@@ -101,3 +101,11 @@ def revoke_token(request):
         return Response({'message': 'token revoked'}, r.status_code)
     # Return the error if it goes badly
     return Response(r.json(), r.status_code)
+
+
+@api_view(['GET'])
+def hello_world(request):
+    '''
+    Method to test.
+    '''
+    return Response({'message': f'success, called by user with username {request.user.username}'})

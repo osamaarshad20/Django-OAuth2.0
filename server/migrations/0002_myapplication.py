@@ -14,9 +14,6 @@ class Migration(migrations.Migration):
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('server', '0001_initial'),
     ]
-    # run_before = [
-    #     ('oauth2_provider', '0001_initial'),
-    # ]
 
     operations = [
         migrations.CreateModel(

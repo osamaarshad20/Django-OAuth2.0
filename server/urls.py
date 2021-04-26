@@ -8,4 +8,6 @@ urlpatterns = [
     path('token/refresh/', views.refresh_token),
     path('token/revoke/', views.revoke_token),
     path('hello_world/', views.hello_world),
+    path('authorization_code/', views.authorization_code),
+    
 ]

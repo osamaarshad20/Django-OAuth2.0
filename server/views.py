@@ -7,8 +7,8 @@ import requests
 from .serializers import CreateUserSerializer
 
 
-CLIENT_ID = 'cFqK7vHAhMB9XvZO24SDrqhSXTMZWHgJ8oEhA9LW'
-CLIENT_SECRET = 'bvR7f1FweEXuKOaJSxr8nSz771RoMjEMYtuxFbBG1RviHmVkMJkwXR68BW3721AM5nRphvEHee8HkaVQNACTwbfwAwyp0ur9ok2PnymQ4KvAbdcyM8ewuzZWzz2Dz2d9'
+CLIENT_ID = 'hBTryC4uRz7kpcK1vF8cfFozcUQWpOjb82VHUoqB'
+CLIENT_SECRET = 'Hs3WnLVBLR3LXnAjcX4w3LknOZmASBRshKWDV0XF8s97fiGDLy5PoFXMBu03i14d8yomJ9z58qRaGnVy2HbXaoNH92tktQXFqb5GA1gMvRYd9nifvNbXauBD1DD0OnQI'
 
 
 
@@ -109,3 +109,19 @@ def hello_world(request):
     Method to test.
     '''
     return Response({'message': f'success, called by user with username {request.user.username}'})
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def authorization_code(request):
+    '''
+    Gets authorization code. Input should be in the format:
+    '''
+    r = requests.post(
+    'http://0.0.0.0:8000/o/authorize/', 
+        data={
+            'client_id': CLIENT_ID,
+            'client_secret': CLIENT_SECRET,
+        },
+    )
+    return Response(r.json())
